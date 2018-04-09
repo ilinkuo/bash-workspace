@@ -1,0 +1,18 @@
+#!bin/bash
+declare -A info
+
+all_repos=(frost elliot moore yeats)
+info=( 
+	[frost,develop]=develop
+	[frost,home]=service
+	[elliot,develop]=master
+	[moore,develop]=master
+	[moore,home]=service
+	[yeats,develop]=develop
+)
+workingsets=(
+    [18010,repos]="elliot moore"
+
+)
+repos=(yeats moore frost pound)
+
