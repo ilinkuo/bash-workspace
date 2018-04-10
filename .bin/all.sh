@@ -1,9 +1,9 @@
-. $WORKSPACE/.workspace
-
-echo working repos: ${repos[@]}
-
 # Save the curent directory
-CURR_DIR=`pwd`
+current_dir=`pwd`
+
+# reset state vars
+command=
+branch=
 
 # Preprocess arguments with quotes
 
@@ -17,24 +17,48 @@ CURR_DIR=`pwd`
 
 #eval set -- $items
 
-#Process options
-option=$1
+# Read in workspace
+. $WORKSPACE/.workspace
 
-if [ "$option" == "-i" ];
-	then echo "  ... running in interactive mode"
+#Process option placeholders, not yet implemented
+if [ $1 == "-i" ]; then 
+	echo "  ... running in interactive mode"
 	shift;
-elif [ "$option" == "-use" ];
-	then echo "  ... use working set"
-	shift;	
+elif [ $1 == "-use" ]; then 
+	echo "  ... use working set $2"
+	echo "repos=( ${workingsets[$2,repos]} )" > "$WORKSPACE/.workingset"
+	echo "branch=${workingsets[$2,branch]}" >> "$WORKSPACE/.workingset"
+	exit; 
+elif [ $1 == "-use-repos" ];	then 
+	shift
+	echo "repos=( $@ )" > "$WORKSPACE/.workingset"
+	echo "repos=( $@ )"
+	exit; 
+elif [ $1 == "run" ]; then
+	echo "  ... running"
+	shift		
+	command=$1
+	shift;
 fi
+
+# Read in working set
+if [ -f $WORKSPACE/.workingset ]; then
+	. $WORKSPACE/.workingset;
+fi
+
+echo working repos: ${repos[@]}
 
 # Loop over repos and execute command
 for repo in "${repos[@]}"
 do
    echo "------ $repo: ${WORKSPACE}/$repo/${info[$repo,home]} ------"
    cd "${WORKSPACE}/$repo/${info[$repo,home]}"
-   eval "$@"
+   if [[ -z "$command" ]]; then
+      eval "$@"
+   else
+   	  eval "${all_run[$command]}" "$@"
+   fi   
 done
 
 #Restore the original directory
-cd $CURR_DIR
+cd $current_dir
