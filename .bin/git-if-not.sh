@@ -1,6 +1,6 @@
-git status
-
-if ! git status | grep $1; then
+if git status | grep -q $1; then
+	git status
+else
 	shift
 	eval "$@"
 fi

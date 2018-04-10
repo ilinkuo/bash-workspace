@@ -6,9 +6,6 @@ create maven install?
 
 write all command
 	unresolved dealing with spaces
-write git-if command 
-	Runs git status, pipes through grep for string, performs action if found
-write git-if-not
 write git-checkout command with -commit -stash option default abort
 	git-if unsaved exit
 	run git checkout with all options
