@@ -3,26 +3,9 @@ Name: bash workspace or git-workspace-extensions
 create npm install
 create maven install?
 
-prereqs
-	Define WORKSPACE env variable
-	.bashrc aliases
-	.bashrc functions
 
-.workspace
-	define repos, repo details, workspace
-restructure
-	.bin, sample-workspace, .bshrc
-	(WORKSPACE vs WSSCRIPTS_HOME/.bin)
 write all command
-	use implicit subfolders definition
-	all -use specific-working-set
-		creates .workingset with WORKING_SET and repos and branch, overriding
-	all -use-repos
-		creates .workingset with repos
-	all -i to run interactively, pausing after each repo
 	unresolved dealing with spaces
-Add all run similar to npm run
-	aliases similar to npm run
 write git-if command 
 	Runs git status, pipes through grep for string, performs action if found
 write git-if-not
