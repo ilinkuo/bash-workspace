@@ -1,3 +1,7 @@
+# import
+. $BWS_HOME/.bin/git-if-not.sh
+. $BWS_HOME/.bin/git-if.sh
+
 # Save the curent directory
 current_dir=`pwd`
 

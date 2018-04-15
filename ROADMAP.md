@@ -6,11 +6,13 @@ create maven install?
 
 write all command
 	unresolved dealing with spaces
+	add interactive mode
 write git-checkout command with -commit -stash option default abort
+rewrite git-if and git-if-not as functions
 	git-if unsaved exit
 	run git checkout with all options
 	if no -b, then does git pull
-write git-checkout-branch = main feature branch -feature -branch
+write git-checkout-branch = main feature branch -feature -branch -story -task
 write git-checkout-develop
 	Add repo check before running git-checkout to change params
 write git-merge with -commit -stash options
@@ -19,6 +21,7 @@ write git-merge with -commit -stash options
 	git-checkout branch
 	git merge
 git-merge-branch
+git-merge-to
 Write installation script
 create npm module to install
 
