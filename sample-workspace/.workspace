@@ -12,9 +12,10 @@ info=(
 )
 workingsets=(
     [18010,repos]="elliot moore"
+    [19088,repos]="yeats frost"
 )
 all_run=(
-     [greet]="echo hi "
+     [greet]="echo hello yellow "
 )
 repos=(yeats moore frost pound)
 

@@ -1,6 +1,8 @@
 # import
-. $BWS_HOME/.bin/git-if-not.sh
+#. $BWS_HOME/.bin/git-if-not. included in git-checkout
 . $BWS_HOME/.bin/git-if.sh
+. $BWS_HOME/.bin/git-checkout.sh
+
 
 # Save the curent directory
 current_dir=`pwd`
@@ -8,7 +10,8 @@ current_dir=`pwd`
 # reset state vars
 command=
 branch=
-
+all_mode=
+all_message
 # Preprocess arguments with quotes
 
 # http://www.linuxjournal.com/content/bash-preserving-whitespace-using-set-and-eval
@@ -27,6 +30,7 @@ branch=
 #Process option placeholders, not yet implemented
 if [ $1 == "-i" ]; then 
 	echo "  ... running in interactive mode"
+	all_mode="-i"
 	shift;
 elif [ $1 == "-use" ]; then 
 	echo "  ... use working set $2"
@@ -56,12 +60,17 @@ echo working repos: ${repos[@]}
 for repo in "${repos[@]}"
 do
    echo "------ $repo: ${WORKSPACE}/$repo/${info[$repo,home]} ------"
+   if [ "$all_mode" == "-i" ]; then
+		all_message=$'Press any key to continue\n'
+		read -n 1 -p "$all_message"
+   fi
    cd "${WORKSPACE}/$repo/${info[$repo,home]}"
    if [[ -z "$command" ]]; then
-      eval "$@"
+	  eval "$@"
    else
-   	  eval "${all_run[$command]}" "$@"
-   fi   
+	  eval "${all_run[$command]}" "$@"
+   fi
+
 done
 
 #Restore the original directory
