@@ -6,7 +6,6 @@ create maven install?
 
 write all command
 	unresolved dealing with spaces
-	add interactive mode
 write git-checkout command with -commit -stash option default abort
 rewrite git-if and git-if-not as functions
 	git-if unsaved exit
