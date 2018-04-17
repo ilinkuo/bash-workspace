@@ -2,7 +2,7 @@
 declare -A info
 
 all_repos=(frost elliot moore yeats)
-info=( 
+declare -A info=( 
 	[frost,develop]=develop
 	[frost,home]=service
 	[elliot,develop]=master
@@ -10,12 +10,14 @@ info=(
 	[moore,home]=service
 	[yeats,develop]=develop
 )
-workingsets=(
+declare -A workingsets=(
     [18010,repos]="elliot moore"
+    [18010,branch]="develop"
     [19088,repos]="yeats frost"
 )
-all_run=(
+declare -A all_run=(
      [greet]="echo hello yellow "
 )
 repos=(yeats moore frost pound)
 
+yup:=5

@@ -11,7 +11,7 @@ current_dir=`pwd`
 command=
 branch=
 all_mode=
-all_message
+all_message=
 # Preprocess arguments with quotes
 
 # http://www.linuxjournal.com/content/bash-preserving-whitespace-using-set-and-eval
@@ -34,13 +34,15 @@ if [ $1 == "-i" ]; then
 	shift;
 elif [ $1 == "-use" ]; then 
 	echo "  ... use working set $2"
+	echo "repos=( ${workingsets[$2,repos]} )"
+	echo "branch=${workingsets[$2,branch]}" 
 	echo "repos=( ${workingsets[$2,repos]} )" > "$WORKSPACE/.workingset"
 	echo "branch=${workingsets[$2,branch]}" >> "$WORKSPACE/.workingset"
 	exit; 
 elif [ $1 == "-use-repos" ];	then 
 	shift
+	echo "repos=( $@ )" 
 	echo "repos=( $@ )" > "$WORKSPACE/.workingset"
-	echo "repos=( $@ )"
 	exit; 
 elif [ $1 == "run" ]; then
 	echo "  ... running"
@@ -70,7 +72,6 @@ do
    else
 	  eval "${all_run[$command]}" "$@"
    fi
-
 done
 
 #Restore the original directory

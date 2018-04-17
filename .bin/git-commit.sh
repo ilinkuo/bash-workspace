@@ -6,6 +6,6 @@ function git-commit(){
 		git_commit_options="$git_commit_options $1"
 		shift
 	done
-	echo commit ${git_commit_options} "\"$@\""
+	echo git commit ${git_commit_options} "\"$@\""
 	git commit ${git_commit_options} "\"$@\""
 }
