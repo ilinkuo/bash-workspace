@@ -35,9 +35,9 @@ if [ $1 == "-i" ]; then
 elif [ $1 == "-use" ]; then 
 	echo "  ... use working set $2"
 	echo "repos=( ${workingsets[$2,repos]} )"
-	echo "branch=${workingsets[$2,branch]}" 
+	echo "story=$2" 
 	echo "repos=( ${workingsets[$2,repos]} )" > "$WORKSPACE/.workingset"
-	echo "branch=${workingsets[$2,branch]}" >> "$WORKSPACE/.workingset"
+	echo "story=$2" >> "$WORKSPACE/.workingset"
 	exit; 
 elif [ $1 == "-use-repos" ];	then 
 	shift
