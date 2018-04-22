@@ -12,7 +12,7 @@ declare -A info=(
 )
 declare -A workingsets=(
     [18010,repos]="elliot moore"
-    [18010,branch]="develop"
+    [18010,story]="feature/WIATR-18010"
     [19088,repos]="yeats frost"
 )
 declare -A all_run=(
