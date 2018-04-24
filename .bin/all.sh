@@ -1,7 +1,8 @@
 # import
 #. $BWS_HOME/.bin/git-if-not. included in git-checkout
-. $BWS_HOME/.bin/git-if.sh
+# . $BWS_HOME/.bin/git-if.sh
 . $BWS_HOME/.bin/git-checkout.sh
+. $BWS_HOME/.bin/git-commit.sh
 
 
 # Save the curent directory
@@ -32,14 +33,14 @@ if [ $1 == "-i" ]; then
 	echo "  ... running in interactive mode"
 	all_mode="-i"
 	shift;
-elif [ $1 == "-use" ]; then 
+elif [ $1 == "--use" ]; then 
 	echo "  ... use working set $2"
 	echo "repos=( ${workingsets[$2,repos]} )"
-	echo "story=$2" 
+	echo "workingset=$2" 
 	echo "repos=( ${workingsets[$2,repos]} )" > "$WORKSPACE/.workingset"
-	echo "story=$2" >> "$WORKSPACE/.workingset"
+	echo "workingset=$2" >> "$WORKSPACE/.workingset"
 	exit; 
-elif [ $1 == "-use-repos" ];	then 
+elif [ $1 == "--use-repos" ];	then 
 	shift
 	echo "repos=( $@ )" 
 	echo "repos=( $@ )" > "$WORKSPACE/.workingset"
