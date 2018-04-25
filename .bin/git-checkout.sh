@@ -1,11 +1,19 @@
-. $BWS_HOME/.bin/git-if-not.sh
+# . $BWS_HOME/.bin/git-if-not.sh
 # Read in workspace
-. $WORKSPACE/.workspace
-. $WORKSPACE/.workingset
-#function git-checkout(){
-#	git-if-not 'modified:|file:' git checkout $1
-#}
+# . $WORKSPACE/.workspace
+# . $WORKSPACE/.workingset
 
-. $BWS_HOME/.bin/process-options.sh
+#. $BWS_HOME/.bin/process-options.sh
 
-echo "git-if-not 'modified:|file:' git checkout $options $branch $@"
+#echo "git-if-not 'modified:|file:' git checkout $options $branch $@"
+
+function git-checkout(){
+	. $BWS_HOME/.bin/git-if-not.sh
+	# Read in workspace
+	. $WORKSPACE/.workspace
+	. $WORKSPACE/.workingset
+	. $BWS_HOME/.bin/process-options.sh
+
+	echo "git-if-not 'modified:|file:' git checkout $options $branch $@"
+
+}

@@ -1,6 +1,6 @@
 # import
 #. $BWS_HOME/.bin/git-if-not. included in git-checkout
-# . $BWS_HOME/.bin/git-if.sh
+. $BWS_HOME/.bin/git-if.sh
 . $BWS_HOME/.bin/git-checkout.sh
 . $BWS_HOME/.bin/git-commit.sh
 
