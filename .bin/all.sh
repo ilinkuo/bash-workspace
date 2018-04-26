@@ -3,6 +3,7 @@
 . $BWS_HOME/.bin/git-if.sh
 . $BWS_HOME/.bin/git-checkout.sh
 . $BWS_HOME/.bin/git-commit.sh
+. $BWS_HOME/.bin/repo-utils.sh
 
 
 # Save the curent directory
@@ -59,6 +60,7 @@ fi
 
 echo working repos: ${repos[@]}
 
+
 # Loop over repos and execute command
 for repo in "${repos[@]}"
 do
@@ -68,6 +70,11 @@ do
 		read -n 1 -p "$all_message"
    fi
    cd "${WORKSPACE}/$repo/${info[$repo,home]}"
+
+   # where=`read-repo`
+   # echo  read-repo '=' $where
+
+
    if [[ -z "$command" ]]; then
 	  eval "$@"
    else

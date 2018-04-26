@@ -7,5 +7,5 @@ function git-commit(){
 		shift
 	done
 	echo git commit ${options} "\"$@\""
-	# git commit ${options} "\"$@\""
+	git commit ${options} "\"$@\""
 }
