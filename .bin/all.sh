@@ -34,14 +34,14 @@ if [ $1 == "-i" ]; then
 	echo "  ... running in interactive mode"
 	all_mode="-i"
 	shift;
-elif [ $1 == "--use" ]; then 
+elif [ $1 == "-use" ]; then 
 	echo "  ... use working set $2"
 	echo "repos=( ${workingsets[$2,repos]} )"
 	echo "workingset=$2" 
 	echo "repos=( ${workingsets[$2,repos]} )" > "$WORKSPACE/.workingset"
 	echo "workingset=$2" >> "$WORKSPACE/.workingset"
 	exit; 
-elif [ $1 == "--use-repos" ];	then 
+elif [ $1 == "-use-repos" ];	then 
 	shift
 	echo "repos=( $@ )" 
 	echo "repos=( $@ )" > "$WORKSPACE/.workingset"

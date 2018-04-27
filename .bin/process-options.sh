@@ -13,6 +13,7 @@ do
 	elif [ $1 == "-develop" ]; then
 		branch=`read-repo`
 		branch="${info[$branch,develop]}"
+		branch=${branch:-develop}
 	else
 		options="$options $1"
 	fi
